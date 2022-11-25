@@ -26,15 +26,10 @@
  * @todo
  * 1. 함수 declare/define 분리?
  * 2. 전역변수는 어디다 관리할 건지?
- *
  * -> 구조를 잘 잡아야하므로 일단 더 개발하면서 추후수정.
 */
-// #include <alkagi/util.h>
-
 
 #define ASSERT(x) assert(x)
-// typedef unsigned int uint;
-
 
 GLFWwindow* g_mainWindow = nullptr;
 const char* glslVersion = NULL;
