@@ -26,16 +26,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="main_vs.glsl">
+    <None Include="main_vs.hlsl">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="main_fs.glsl">
+    <None Include="main_fs.hlsl">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="light_vs.glsl">
+    <None Include="light_vs.hlsl">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="light_fs.glsl">
+    <None Include="light_fs.hlsl">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

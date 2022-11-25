@@ -135,10 +135,10 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="light_fs.glsl" />
-    <None Include="light_vs.glsl" />
-    <None Include="main_fs.glsl" />
-    <None Include="main_vs.glsl" />
+    <None Include="light_fs.hlsl" />
+    <None Include="light_vs.hlsl" />
+    <None Include="main_fs.hlsl" />
+    <None Include="main_vs.hlsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
