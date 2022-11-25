@@ -1,9 +1,10 @@
 # OpenGL
 
-1. vc++directories ¿¡¼­ include, lib¼¼ÆÃ
-2. linker ¿É¼Ç¿¡¼­ additinoal dependencies¿¡ opengl32.lib, glfw3.libÃß°¡
-(ÃßÈÄ¿¡ dllÀÌ ÇÊ¿äÇÏ¸é ÀÏÀÏÀÌ ¿©±â´Ù°¡ ³Ö¾îÁà¾ßÇÔ)
-3. glad.c¸¦ ÇÁ·ÎÁ§Æ®¾È¿¡´Ù°¡µµ ³Ö°í include/glad/src/glad.c¿¡µµ ³Ö¾îÁà¾ßÇÔ.
-4. glfwºôµåÈÄ glfw3.pdb ¶ÇÇÑ lib/ °æ·Î¿¡ glfw3.libÆ÷ÇÔ °°ÀÌ ³Ö¾îÁà¾ßÇÔ.
+1. vc++directories ì—ì„œ include, libì„¸íŒ…
+2. linker ì˜µì…˜ì—ì„œ additinoal dependenciesì— opengl32.lib, glfw3.libì¶”ê°€
+(ì¶”í›„ì— dllì´ í•„ìš”í•˜ë©´ ì¼ì¼ì´ ì—¬ê¸°ë‹¤ê°€ ë„£ì–´ì¤˜ì•¼í•¨)
+3. glad.cë¥¼ í”„ë¡œì íŠ¸ì•ˆì—ë‹¤ê°€ë„ ë„£ê³  include/glad/src/glad.cì—ë„ ë„£ì–´ì¤˜ì•¼í•¨.
+4. glfwë¹Œë“œí›„ glfw3.pdb ë˜í•œ lib/ ê²½ë¡œì— glfw3.libí¬í•¨ ê°™ì´ ë„£ì–´ì¤˜ì•¼í•¨.
 
+https://stackoverflow.com/questions/12821391/c-visual-studio-linking-using-pragma-comment
 https://stackoverflow.com/questions/27883940/can-we-change-all-the-word-at-once-in-visual-studio
