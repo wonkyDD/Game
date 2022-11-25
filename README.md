@@ -1,12 +1,13 @@
-# OpenGL
+# Game
 
-1. vc++directories 에서 include, lib세팅
-2. linker 옵션에서 additinoal dependencies에 opengl32.lib, glfw3.lib추가
-(추후에 dll이 필요하면 일일이 여기다가 넣어줘야함)
-3. glad.c를 프로젝트안에다가도 넣고 include/glad/src/glad.c에도 넣어줘야함.
-4. glfw빌드후 glfw3.pdb 또한 lib/ 경로에 glfw3.lib포함 같이 넣어줘야함.
+WonkyDD Labs for ...
 
-https://stackoverflow.com/questions/12821391/c-visual-studio-linking-using-pragma-comment
-https://stackoverflow.com/questions/27883940/can-we-change-all-the-word-at-once-in-visual-studio
-https://stackoverflow.com/questions/12490015/visual-studio-cant-see-my-included-header-files
-https://stackoverflow.com/questions/7845886/linking-dll-in-visual-studio
+- Graphics
+  - OpenGL
+  - Vulkan
+- Mathematics
+- Physics
+- Game
+- GameEngine
+
+<br>
