@@ -1,7 +1,6 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-
 #include <thread>
 // #include <cmath>
 // #include <cstdlib>
@@ -39,8 +38,8 @@
 
 GLFWwindow* g_mainWindow = nullptr;
 const char* glslVersion = NULL;
-const unsigned int WINDOW_WIDTH = 800;
-const unsigned int WINDOW_HEIGHT = 600;
+const unsigned int WINDOW_WIDTH = 1920;
+const unsigned int WINDOW_HEIGHT = 1080;
 
 float deltaTime = 0.0f;
 float lastTime = 0.0f;
@@ -54,7 +53,7 @@ glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
 // float strength = 0.1f;
 
 
-int init(const char* caption = "OpenGL");
+int init(const char* caption = "Testbed");
 void processInput(GLFWwindow* window);
 void cursorPosCallback(GLFWwindow* window, double xposIn, double yposIn);
 void scrollCallback(GLFWwindow* window, double xoffset, double yoffset);
@@ -86,8 +85,8 @@ int init(const char* caption)
         return 0;
     }
 
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 #ifdef __APPLE__
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);

@@ -71,8 +71,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>D:\dev\Game\LearnOpenGL\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\dev\Game\LearnOpenGL\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\dev\Game\LearnOpenGL\testbed\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\dev\Game\LearnOpenGL\testbed\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -133,6 +133,12 @@
   <ItemGroup>
     <ClCompile Include="glad.c" />
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="light_fs.glsl" />
+    <None Include="light_vs.glsl" />
+    <None Include="main_fs.glsl" />
+    <None Include="main_vs.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
