@@ -4,7 +4,12 @@
 
 - Graphics API
   - OpenGL
-  - Vulkan
+  - DirectX
+    - DX11
+    - DX12
+  <!-- - Vulkan -->
+- GPGPU
+  - CUDA
 - Engine
   - UE4/UE5
   - godot
