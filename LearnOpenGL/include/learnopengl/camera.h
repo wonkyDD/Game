@@ -6,18 +6,19 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <vector>
 
-enum CameraMovement {
-    FORWARD,
-    BACKWARD,
-    LEFT,
-    RIGHT
-};
-
 const float YAW = -90.0f;
 const float PITCH = 0.0f;
 const float SPEED = 10.0f;
 const float SENSITIVITY = 0.1f;
 const float ZOOM = 45.0f;
+
+enum CameraMovement 
+{
+    FORWARD,
+    BACKWARD,
+    LEFT,
+    RIGHT
+};
 
 
 class Camera
@@ -30,16 +31,16 @@ public:
     glm::vec3 Right;
     float Yaw;
     float Pitch;
-    /** @todo Roll이 필요한 경우 */
+    /** @TODO Roll이 필요한 경우 */
     // float Roll;
     float MovementSpeed;
     float MouseSensitivity;
     float Zoom;
 
-    /** @todo WorldUp 고정 */
+    /** @TODO WorldUp 고정 */
     Camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 worldUp = glm::vec3(0.0f, 1.0f, 0.0f), float yaw = YAW, float pitch = PITCH) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM)
     {
-        /** @todo 인자로 넘어온건 안에서 할당? */
+        /** @TODO 인자로 넘어온건 안에서 할당? */
         Position = position;
         WorldUp = worldUp;
         Yaw = yaw;
@@ -49,7 +50,7 @@ public:
 
     Camera(float posX, float posY, float posZ, float worldUpX, float worldUpY, float worldUpZ, float yaw, float pitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM)
     {
-        /** @todo 인자로 넘어온건 안에서 할당? */
+        /** @TODO 인자로 넘어온건 안에서 할당? */
         Position = glm::vec3(posX, posY, posZ);
         WorldUp = glm::vec3(worldUpX, worldUpY, worldUpZ);
         Yaw = yaw;
@@ -59,10 +60,10 @@ public:
 
     glm::mat4 GetViewMatrix()
     {
-        /** @todo 항상 target이 position에서 방향벡터를 더한곳? */
+        /** @TODO 항상 target이 position에서 방향벡터를 더한곳? */
         return glm::lookAt(Position, Position + Front, Up);
 
-        /** @todo Orthogonal Bases and Gram-Schmidt 참조 */
+        /** @TODO Orthogonal Bases and Gram-Schmidt 참조 */
         // return calculateLookAtMatrix(Position, Position + Front, Up);
     }
 
@@ -78,15 +79,15 @@ public:
 
     void ProcessMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch = true)
     {
-        /** @todo sensitivity */
+        /** @TODO sensitivity */
         xoffset *= MouseSensitivity;
         yoffset *= MouseSensitivity;
 
-        /** @todo yaw, pitch, roll */
+        /** @TODO yaw, pitch, roll */
         Yaw += xoffset;
         Pitch += yoffset;
 
-        /** @todo 왜 하필 89.0f */
+        /** @TODO 왜 하필 89.0f */
         if (constrainPitch)
         {
             if (Pitch > 89.0f) Pitch = 89.0f;
@@ -96,7 +97,7 @@ public:
         updateCameraVectors();
     }
 
-    void ProcessMouseScroll(float yoffset)
+    void ProcessMouseScroll(double yoffset)
     {
         /**
          * @note
@@ -116,8 +117,8 @@ public:
 private:
     void updateCameraVectors()
     {
-        /** @todo 뜬금없는 수식들의 근원 */
-        /** @todo Roll이 필요한 경우 */
+        /** @TODO 뜬금없는 수식들의 근원 */
+        /** @TODO Roll이 필요한 경우 */
         glm::vec3 front;
         front.x = cos(glm::radians(Yaw)) * cos(glm::radians(Pitch));
         front.y = sin(glm::radians(Pitch));

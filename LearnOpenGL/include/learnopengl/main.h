@@ -1,7 +1,11 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include <thread>
+#pragma comment(lib, "opengl32.lib")
+#pragma comment(lib, "glfw3.lib")
+#pragma comment(lib, "assimp-vc143-mtd.lib")
+
+//#include <thread>
 // #include <cmath>
 // #include <cstdlib>
 // #include <time.h>
@@ -16,19 +20,16 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb/stb_image.h>
 // #include <imgui/imgui.h>
-
 #include <learnopengl/shader.h>
 #include <learnopengl/filesystem.h>
 #include <learnopengl/camera.h>
+//#include <learnopengl/mesh.h>
+#include <learnopengl/model.h>
 
 
-/**
- * @todo
- * 1. 함수 declare/define 분리?
- * 2. 전역변수는 어디다 관리할 건지?
- * -> 구조를 잘 잡아야하므로 일단 더 개발하면서 추후수정.
-*/
-
+// @TODO
+// 1. 함수 및 클래스 declare/define 분리?
+// 2. 전역변수는 어디다 관리할 건지?
 #define ASSERT(x) assert(x)
 
 GLFWwindow* g_mainWindow = nullptr;
@@ -56,21 +57,12 @@ void errorCallback(int error, const char* description);
 void framebufferSizeCallback(GLFWwindow* window, int width, int height);
 
 
-/**
- * @todo
- * glfwInit, glfwCreateWindow, gladLoadGLLoader 별로
- * 리턴하는 int값을 따로 만들어줄지? 아니면 enum을 따로 리턴해줄지?
- *
- * @todo Enum 네이밍 방식? (EInit은 좀;;)
-*/
-
-// enum class EInit 
-// {
-//     glfwInit,
-//     glfwCreateWindow,
-//     gladLoadGLLoader
-// };
-
+// @TODO
+// glfwInit, glfwCreateWindow, gladLoadGLLoader 별로
+// 리턴하는 int값을 따로 만들어줄지? 아니면 enum을 따로 리턴해줄지?
+// 
+// @TODO 
+// Enum 네이밍 방식? (EInit은 좀;;)
 
 int init(const char* caption)
 {
@@ -100,7 +92,7 @@ int init(const char* caption)
     glfwSetScrollCallback(g_mainWindow, scrollCallback);
     glfwSetCursorPosCallback(g_mainWindow, cursorPosCallback);
 
-    /** @todo InputMode */
+    // @TODO InputMode
     glfwSetInputMode(g_mainWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     // glfwSetInputMode(g_mainWindow, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 
@@ -110,23 +102,18 @@ int init(const char* caption)
         return 0;
     }
 
-    /** @todo 위치 */
+    // tell stb_image.h to flip loaded texture's on the y-axis (before loading model).
+    stbi_set_flip_vertically_on_load(true);
+
     glEnable(GL_DEPTH_TEST);
 
-    /** @todo 파일경로 */
-    /** @todo shader 컴파일도 Init에서 처리하는 방법? */
-    // Shader mainShader("/Users/joseonghyeon/dev/alkagi/src/main.vs", "/Users/joseonghyeon/dev/alkagi/src/main.fs");
-    // Shader lightShader("/Users/joseonghyeon/dev/alkagi/src/light_source.vs", "/Users/joseonghyeon/dev/alkagi/src/light_source.fs");
-
+    // @TODO shader 컴파일도 Init에서 처리하는 방법?
+    // Shader mainShader("main_vs.hlsl", "main_fs.hlsl");
     return 1;
 }
 
-/**
- * @todo
- * ImGui에서 createUI하는데
- * 추가적으로 box2d의 testbed에서
- * imgui_glfw_impl 이런것때매 더어려울듯
-*/
+// @TODO ImGUI와 box2d 의 createUI
+// 
 // void createUI()
 // {
 // 	IMGUI_CHECKVERSION();
@@ -180,7 +167,7 @@ unsigned int loadTexture(const char* path)
     unsigned char* data = stbi_load(path, &width, &height, &nrComponents, 0);
     if (data)
     {
-        GLenum format;
+        GLenum format = NULL;
         if (nrComponents == 1)      format = GL_RED;
         else if (nrComponents == 3) format = GL_RGB;
         else if (nrComponents == 4) format = GL_RGBA;
@@ -209,11 +196,10 @@ void processInput(GLFWwindow* window)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) glfwSetWindowShouldClose(window, true);
 
-    /**
-     * @todo
-     * ImGui로 ambient, specular의
-     * intensity를 각각 조절하도록
-    */
+    // @TODO
+    // ImGui로 ambient, specular의
+    // intensity를 각각 조절하도록
+    // 
     // if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
     // {
     //     strength += 0.005f;
