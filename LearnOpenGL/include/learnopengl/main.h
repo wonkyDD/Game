@@ -4,6 +4,7 @@
 #pragma comment(lib, "opengl32.lib")
 #pragma comment(lib, "glfw3.lib")
 #pragma comment(lib, "assimp-vc143-mtd.lib")
+#pragma comment(lib, "box2d.lib")
 
 //#include <thread>
 // #include <cmath>
