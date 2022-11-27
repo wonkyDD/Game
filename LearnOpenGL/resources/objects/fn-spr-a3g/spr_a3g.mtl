@@ -10,7 +10,9 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd blender_prj_fn_spr_a3g\\models
+map_Kd leupold_scope_BaseColor.png
+map_Bump leupold_scope_Normal_opengl.png
+map_Ks leupold_scope_Metallic.png
 
 newmtl leupold_scope_NONE
 Ns 249.019608
@@ -21,7 +23,9 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd blender_prj_fn_spr_a3g\\models
+map_Kd leupold_scope_BaseColor.png
+map_Bump leupold_scope_Normal_opengl.png
+map_Ks leupold_scope_Metallic.png
 
 newmtl magazine
 Ns 249.019608
@@ -32,6 +36,9 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
+map_Kd magazine_BaseColor.png
+map_Bump magazine_Normal_opengl.png
+map_Ks magazine_Metallic.png
 
 newmtl spr_a3g
 Ns 249.019608
@@ -42,4 +49,6 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd blender_prj_fn_spr_a3g\\models
+map_Kd spr_a3g_BaseColor_default.png
+map_Bump spr_a3g_Normal_opengl.png
+map_Ks spr_a3g_Metallic.png
