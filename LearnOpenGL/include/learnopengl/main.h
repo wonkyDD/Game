@@ -1,18 +1,20 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+// @NOTE
+// Physx, bullet3, ImGui, ImGuizmo, freetype,
+
 #pragma comment(lib, "opengl32.lib")
 #pragma comment(lib, "glfw3.lib")
 #pragma comment(lib, "assimp-vc143-mtd.lib")
+// @NOTE assimp가 확실히 release에서 빠름
+//#pragma comment(lib, "assimp-vc143-mt.lib")
 #pragma comment(lib, "box2d.lib")
 
-//#include <thread>
-// #include <cmath>
-// #include <cstdlib>
-// #include <time.h>
+
 #include <stdio.h>
 #include <assert.h>
-
+#define ASSERT(x) assert(x)
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
@@ -31,8 +33,6 @@
 // @TODO
 // 1. 함수 및 클래스 declare/define 분리?
 // 2. 전역변수는 어디다 관리할 건지?
-#define ASSERT(x) assert(x)
-
 GLFWwindow* g_mainWindow = nullptr;
 const char* glslVersion = NULL;
 const unsigned int WINDOW_WIDTH = 1920;
