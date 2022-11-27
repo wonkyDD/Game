@@ -20,7 +20,7 @@ struct Vertex
     glm::vec2 TexCoords;
     glm::vec3 Tangent;
     glm::vec3 Bitangent;
-    // bone indexes which will influence this vertex
+    // bone indexes which influence this vertex
     int m_BoneIDs[MAX_BONE_INFLUENCE];
     // weights from each bone
     float m_Weights[MAX_BONE_INFLUENCE];
@@ -30,6 +30,7 @@ struct Texture
 {
     unsigned int id;
     string type;
+    // @TODO path -> filename
     string path;
 };
 
@@ -55,7 +56,6 @@ public:
 
     void Draw(Shader& shader)
     {
-        // bind appropriate textures
         unsigned int diffuseNr = 1;
         unsigned int specularNr = 1;
         unsigned int normalNr = 1;

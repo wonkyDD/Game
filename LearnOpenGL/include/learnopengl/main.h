@@ -49,7 +49,7 @@ float lastY = WINDOW_HEIGHT / 2.0;
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 
 glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
-// float strength = 0.1f;
+int polygonMode = GL_TRIANGLES;
 
 
 int init(const char* caption = "Testbed");
@@ -96,7 +96,7 @@ int init(const char* caption)
     glfwSetCursorPosCallback(g_mainWindow, cursorPosCallback);
 
     // @TODO InputMode
-    glfwSetInputMode(g_mainWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    //glfwSetInputMode(g_mainWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     // glfwSetInputMode(g_mainWindow, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -112,6 +112,7 @@ int init(const char* caption)
 
     // @TODO shader 컴파일도 Init에서 처리하는 방법?
     // Shader mainShader("main_vs.hlsl", "main_fs.hlsl");
+    //glPolygonMode(GL_FRONT_AND_BACK, polygonMode);
     return 1;
 }
 
@@ -199,26 +200,17 @@ void processInput(GLFWwindow* window)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) glfwSetWindowShouldClose(window, true);
 
-    // @TODO
-    // ImGui로 ambient, specular의
-    // intensity를 각각 조절하도록
-    // 
-    // if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
-    // {
-    //     strength += 0.005f;
-    //     if (strength >= 1.0f) strength = 1.0f;
-    // }
-
-    // if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
-    // {
-    //     strength -= 0.005f;
-    //     if (strength <= 0.0f) strength = 0.0f;
-    // }
-
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) camera.ProcessKeyboard(FORWARD, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) camera.ProcessKeyboard(BACKWARD, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) camera.ProcessKeyboard(RIGHT, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) camera.ProcessKeyboard(LEFT, deltaTime);
+
+    // @TODO
+    // ImGui로 ambient, specular의
+    // intensity를 각각 조절하도록
+
+    if (glfwGetKey(window, GLFW_KEY_F) == GLFW_PRESS) polygonMode = GL_FILL;
+    if (glfwGetKey(window, GLFW_KEY_L) == GLFW_PRESS) polygonMode = GL_LINE;
 }
 
 void cursorPosCallback(GLFWwindow* window, double xposIn, double yposIn)
