@@ -8,3 +8,5 @@ https://stackoverflow.com/questions/12821391/c-visual-studio-linking-using-pragm
 https://stackoverflow.com/questions/27883940/can-we-change-all-the-word-at-once-in-visual-studio
 https://stackoverflow.com/questions/12490015/visual-studio-cant-see-my-included-header-files
 https://stackoverflow.com/questions/7845886/linking-dll-in-visual-studio
+https://stackoverflow.com/questions/35793622/lnk2019unresolved-external-symbol-crtdbgreport-referenced-in-function-crt-rtc
+(https://stackoverflow.com/a/70711872)
