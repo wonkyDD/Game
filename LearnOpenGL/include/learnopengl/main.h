@@ -2,14 +2,16 @@
 #define MAIN_H
 
 // @NOTE
-// Physx, bullet3, ImGui, ImGuizmo, freetype,
+// Physx, bullet3, ImGui, ImGuizmo, freetype,   
 
 #pragma comment(lib, "opengl32.lib")
+// @TODO glfw3 release로 교체
 #pragma comment(lib, "glfw3.lib")
-#pragma comment(lib, "assimp-vc143-mtd.lib")
 // @NOTE assimp가 확실히 release에서 빠름
-//#pragma comment(lib, "assimp-vc143-mt.lib")
-#pragma comment(lib, "box2d.lib")
+//#pragma comment(lib, "assimp-vc143-mtd.lib")
+#pragma comment(lib, "assimp-vc143-mt.lib")
+// @TODO box2d release로 교체
+//#pragma comment(lib, "box2d.lib")
 
 
 #include <stdio.h>
