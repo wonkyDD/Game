@@ -6,7 +6,7 @@ int main()
     if (init() == 0) return -1;
 
     Shader mainShader("main_vs.hlsl", "main_fs.hlsl");
-    
+
     float cubeVertices[] = {
         // positions          // texture Coords
         -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
@@ -101,7 +101,7 @@ int main()
 
         processInput(g_mainWindow);
         glPolygonMode(GL_FRONT_AND_BACK, polygonMode);
-        
+
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 

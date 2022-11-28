@@ -9,7 +9,7 @@
 #pragma comment(lib, "glfw3.lib")
 // @NOTE assimp가 확실히 release에서 빠름
 //#pragma comment(lib, "assimp-vc143-mtd.lib")
-#pragma comment(lib, "assimp-vc143-mt.lib")
+//#pragma comment(lib, "assimp-vc143-mt.lib")
 // @TODO box2d release로 교체
 //#pragma comment(lib, "box2d.lib")
 
@@ -96,7 +96,7 @@ int init(const char* caption)
     glfwSetCursorPosCallback(g_mainWindow, cursorPosCallback);
 
     // @TODO InputMode
-    //glfwSetInputMode(g_mainWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    glfwSetInputMode(g_mainWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     // glfwSetInputMode(g_mainWindow, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -108,7 +108,11 @@ int init(const char* caption)
     // tell stb_image.h to flip loaded texture's on the y-axis (before loading model).
     stbi_set_flip_vertically_on_load(true);
 
+
     glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
+    //glDepthMask(GL_FALSE);
+
 
     // @TODO shader 컴파일도 Init에서 처리하는 방법?
     // Shader mainShader("main_vs.hlsl", "main_fs.hlsl");
