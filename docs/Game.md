@@ -10,3 +10,4 @@ https://stackoverflow.com/questions/12490015/visual-studio-cant-see-my-included-
 https://stackoverflow.com/questions/7845886/linking-dll-in-visual-studio
 https://stackoverflow.com/questions/35793622/lnk2019unresolved-external-symbol-crtdbgreport-referenced-in-function-crt-rtc
 (https://stackoverflow.com/a/70711872)
+https://stackoverflow.com/questions/3694630/c-const-reference-before-vs-after-type-specifier
