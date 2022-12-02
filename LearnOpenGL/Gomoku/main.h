@@ -10,7 +10,11 @@
 #include <glm/gtc/type_ptr.hpp>
 #include "shader.h"
 #include "camera.h"
+#include "draw.h"
+#include "UI.h"
 
+// @TODO lib를 ide빌드가 release, debug 인지에 따라 알맞게 바꿔줄것
+// (glfw release빌드 추가)
 #pragma comment(lib, "opengl32.lib")
 #pragma comment(lib, "glfw3.lib")
 
@@ -61,7 +65,7 @@ int init(const char* caption)
 
     // @TODO InputMode
     //glfwSetInputMode(g_mainWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-    // glfwSetInputMode(g_mainWindow, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+    //glfwSetInputMode(g_mainWindow, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
@@ -82,17 +86,20 @@ void processInput(GLFWwindow* window)
 
 void cursorPosCallback(GLFWwindow* window, double xposIn, double yposIn)
 {
+    // @TODO screen space -> clip/view/world(?) space
+    // https://stackoverflow.com/questions/7692988/opengl-math-projecting-screen-space-to-world-space-coords
+
+
     float xpos = static_cast<float>(xposIn);
     float ypos = static_cast<float>(yposIn);
 
-    printf("%f  %f\n", xpos, ypos);
+    //printf("%f  %f\n", xpos, ypos);
 }
 
 void framebufferSizeCallback(GLFWwindow* window, int width, int height)
 {
     glViewport(0, 0, width, height);
-    // @TODO
-    // screen coordinate변환을 위해서 depth설정도 필요한데 (viewport포함)
+    // @TODO screen coordinate변환을 위해서 depth설정도 필요한데 (viewport포함)
     //glDepthRange(n, f);
 }
 

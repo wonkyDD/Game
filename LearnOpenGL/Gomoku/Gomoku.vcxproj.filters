@@ -26,10 +26,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="main_vs.hlsl">
+    <None Include="grid_vs.hlsl">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="main_fs.hlsl">
+    <None Include="grid_fs.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="circle_vs.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="circle_fs.hlsl">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>
@@ -41,6 +47,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="draw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
