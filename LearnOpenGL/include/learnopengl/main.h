@@ -4,12 +4,16 @@
 // @NOTE
 // Physx, bullet3, ImGui, ImGuizmo, freetype,   
 
+// @TODO
+// lib를 release, debug에 맞게 바꾸는
+// if-else나 if-ifndef
+
 #pragma comment(lib, "opengl32.lib")
 // @TODO glfw3 release로 교체
 #pragma comment(lib, "glfw3.lib")
 // @NOTE assimp가 확실히 release에서 빠름
 //#pragma comment(lib, "assimp-vc143-mtd.lib")
-//#pragma comment(lib, "assimp-vc143-mt.lib")
+#pragma comment(lib, "assimp-vc143-mt.lib")
 // @TODO box2d release로 교체
 //#pragma comment(lib, "box2d.lib")
 
@@ -112,6 +116,18 @@ int init(const char* caption)
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
     //glDepthMask(GL_FALSE);
+
+    //glEnable(GL_STENCIL_TEST);
+    //glStencilMask(0xFF);
+    ////glStencilMask(0x00);
+    //glStencilFunc(GL_EQUAL, 0, 0xFF);
+    //glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);    
+
+
+    glEnable(GL_STENCIL_TEST);
+    glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
+    glStencilMask(0xFF);
+    glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
 
 
     // @TODO shader 컴파일도 Init에서 처리하는 방법?
@@ -245,6 +261,10 @@ void scrollCallback(GLFWwindow* window, double xoffset, double yoffset)
 void framebufferSizeCallback(GLFWwindow* window, int width, int height)
 {
     glViewport(0, 0, width, height);
+
+    // @TODO
+    // screen coordinate변환을 위해서 depth설정도 필요한데 (viewport포함)
+    //glDepthRange(n, f);
 }
 
 void errorCallback(int error, const char* description)

@@ -14,7 +14,7 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="Shaders">
-      <UniqueIdentifier>{6a049ae1-d60f-4408-bb35-d39a8c6206e1}</UniqueIdentifier>
+      <UniqueIdentifier>{dfbf1b63-c261-4278-8113-dcb2e65ea692}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -30,12 +30,6 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="main_fs.hlsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="light_vs.hlsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="light_fs.hlsl">
       <Filter>Shaders</Filter>
     </None>
     <None Include="stencil_fs.hlsl">

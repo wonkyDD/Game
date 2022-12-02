@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{0fcb435a-c17f-44aa-a99f-df8ce93f96eb}</ProjectGuid>
-    <RootNamespace>testbed</RootNamespace>
+    <ProjectGuid>{e7c15f42-0f2b-4bd8-a695-d0e53dd57cc8}</ProjectGuid>
+    <RootNamespace>My42stenciltesting</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -73,7 +73,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>D:\dev\Game\LearnOpenGL\include;$(IncludePath)</IncludePath>
     <LibraryPath>D:\dev\Game\LearnOpenGL\lib;$(LibraryPath)</LibraryPath>
-    <ExecutablePath>$(VC_ExecutablePath_x64);$(CommonExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>D:\dev\Game\LearnOpenGL\include;$(IncludePath)</IncludePath>
@@ -117,7 +116,6 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -142,8 +140,6 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="light_fs.hlsl" />
-    <None Include="light_vs.hlsl" />
     <None Include="main_fs.hlsl" />
     <None Include="main_vs.hlsl" />
     <None Include="stencil_fs.hlsl" />

@@ -7,7 +7,7 @@ int main()
 
     Shader mainShader("main_vs.hlsl", "main_fs.hlsl");
     Shader stencilShader("main_vs.hlsl", "stencil_fs.hlsl");
-    
+
     float cubeVertices[] = {
         // positions          // texture Coords
         -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
@@ -102,7 +102,7 @@ int main()
 
         processInput(g_mainWindow);
         glPolygonMode(GL_FRONT_AND_BACK, polygonMode);
-        
+
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
