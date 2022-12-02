@@ -1,11 +1,15 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <vector>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb/stb_image.h>
-#include <gomoku/shader.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include "shader.h"
+#include "camera.h"
 
 #pragma comment(lib, "opengl32.lib")
 #pragma comment(lib, "glfw3.lib")
@@ -13,14 +17,18 @@
 
 GLFWwindow* g_mainWindow = nullptr;
 const char* glslVersion = NULL;
-const unsigned int WINDOW_WIDTH = 1920;
-const unsigned int WINDOW_HEIGHT = 1080;
+const unsigned int WINDOW_WIDTH = 1600;
+const unsigned int WINDOW_HEIGHT = 1600;
+// @TODO
+//Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+Camera camera(glm::vec3(0.0f, 3.0f, 0.0f));
 
 
 int init(const char* caption = "Gomoku");
 void processInput(GLFWwindow* window);
 void errorCallback(int error, const char* description);
 void framebufferSizeCallback(GLFWwindow* window, int width, int height);
+void cursorPosCallback(GLFWwindow* window, double xposIn, double yposIn);
 
 
 int init(const char* caption)
@@ -49,6 +57,7 @@ int init(const char* caption)
     glfwMakeContextCurrent(g_mainWindow);
     glfwSetErrorCallback(errorCallback);
     glfwSetFramebufferSizeCallback(g_mainWindow, framebufferSizeCallback);
+    glfwSetCursorPosCallback(g_mainWindow, cursorPosCallback);
 
     // @TODO InputMode
     //glfwSetInputMode(g_mainWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -71,10 +80,17 @@ void processInput(GLFWwindow* window)
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) glfwSetWindowShouldClose(window, true);
 }
 
+void cursorPosCallback(GLFWwindow* window, double xposIn, double yposIn)
+{
+    float xpos = static_cast<float>(xposIn);
+    float ypos = static_cast<float>(yposIn);
+
+    printf("%f  %f\n", xpos, ypos);
+}
+
 void framebufferSizeCallback(GLFWwindow* window, int width, int height)
 {
     glViewport(0, 0, width, height);
-
     // @TODO
     // screen coordinate변환을 위해서 depth설정도 필요한데 (viewport포함)
     //glDepthRange(n, f);
