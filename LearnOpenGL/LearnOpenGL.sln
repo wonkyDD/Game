@@ -41,6 +41,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Axe.io", "Axe.io\Axe.io.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "4.2-stencil_testing", "4.2-stencil_testing\4.2-stencil_testing.vcxproj", "{E7C15F42-0F2B-4BD8-A695-D0E53DD57CC8}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FallGuys", "FallGuys\FallGuys.vcxproj", "{21A51EDA-7D4A-429E-9D9A-70F73188B8E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -201,6 +203,14 @@ Global
 		{E7C15F42-0F2B-4BD8-A695-D0E53DD57CC8}.Release|x64.Build.0 = Release|x64
 		{E7C15F42-0F2B-4BD8-A695-D0E53DD57CC8}.Release|x86.ActiveCfg = Release|Win32
 		{E7C15F42-0F2B-4BD8-A695-D0E53DD57CC8}.Release|x86.Build.0 = Release|Win32
+		{21A51EDA-7D4A-429E-9D9A-70F73188B8E4}.Debug|x64.ActiveCfg = Debug|x64
+		{21A51EDA-7D4A-429E-9D9A-70F73188B8E4}.Debug|x64.Build.0 = Debug|x64
+		{21A51EDA-7D4A-429E-9D9A-70F73188B8E4}.Debug|x86.ActiveCfg = Debug|Win32
+		{21A51EDA-7D4A-429E-9D9A-70F73188B8E4}.Debug|x86.Build.0 = Debug|Win32
+		{21A51EDA-7D4A-429E-9D9A-70F73188B8E4}.Release|x64.ActiveCfg = Release|x64
+		{21A51EDA-7D4A-429E-9D9A-70F73188B8E4}.Release|x64.Build.0 = Release|x64
+		{21A51EDA-7D4A-429E-9D9A-70F73188B8E4}.Release|x86.ActiveCfg = Release|Win32
+		{21A51EDA-7D4A-429E-9D9A-70F73188B8E4}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
