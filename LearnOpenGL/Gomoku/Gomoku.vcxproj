@@ -142,6 +142,8 @@
   <ItemGroup>
     <None Include="circle_fs.hlsl" />
     <None Include="circle_vs.hlsl" />
+    <None Include="cursor_fs.hlsl" />
+    <None Include="cursor_vs.hlsl" />
     <None Include="grid_fs.hlsl" />
     <None Include="grid_vs.hlsl" />
   </ItemGroup>
