@@ -140,6 +140,8 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="circle_fs.hlsl" />
+    <None Include="circle_vs.hlsl" />
     <None Include="regular_polygon_fs.hlsl" />
     <None Include="regular_polygon_vs.hlsl" />
     <None Include="cursor_fs.hlsl" />
