@@ -134,10 +134,6 @@ public:
         glBindVertexArray(0);
         //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
         glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-        rpShader.use();
-        glm::mat4 model = glm::mat4(1.0f);
-        rpShader.setMat4("model", model);
     }
 
     // @TODO 구현위치
@@ -150,9 +146,13 @@ public:
         //glDeleteBuffers(1, &ibo);
     }
 
-    void DrawLoop()
+    void DrawLoop(glm::vec3 translate = glm::vec3(0.0f))
     {
         rpShader.use();
+        glm::mat4 model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(translate.x, translate.y, translate.z));
+        rpShader.setMat4("model", model);
+
         glBindVertexArray(vao);
         glDrawArrays(GL_LINE_LOOP, 0, num);
         glBindVertexArray(0);
@@ -167,6 +167,7 @@ public:
     }
 };
 
+// @TODO circle을 fs에서 그리기 (circle_*.hlsl)
 class Circle
 {
 private:
