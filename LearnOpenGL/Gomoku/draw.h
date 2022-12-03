@@ -10,11 +10,12 @@ class Grid
 private:
     GLuint vao, vbo, ibo;
     GLuint length;
+    Shader& gridShader;
 public:
     // https ://en.wikipedia.org/wiki/Gomoku
     const int Slices = 15;
 
-	Grid(Shader& gridShader)
+	Grid(Shader& _gridShader) : gridShader(_gridShader)
     {
         std::vector<glm::vec3> vertices;
         std::vector<glm::uvec4> indices;
@@ -71,14 +72,14 @@ public:
         gridShader.setMat4("model", model);
 
         // https://www.schemecolor.com/weird-rainbow.php
-        float r = (float)198 / (float)255;
-        float g = (float)53 / (float)255;
-        float b = (float)1 / (float)255;
-        float a = 1.0f;
-        gridShader.setFloat("color.r", r);
-        gridShader.setFloat("color.g", g);
-        gridShader.setFloat("color.b", b);
-        gridShader.setFloat("color.a", a);
+        //float r = (float)198 / (float)255;
+        //float g = (float)53 / (float)255;
+        //float b = (float)1 / (float)255;
+        //float a = 1.0f;
+        gridShader.setFloat("color.r", 0.0f);
+        gridShader.setFloat("color.g", 0.0f);
+        gridShader.setFloat("color.b", 0.0f);
+        gridShader.setFloat("color.a", 1.0f);
     }
 
     // @TODO 구현위치
@@ -89,31 +90,136 @@ public:
         glDeleteBuffers(1, &ibo);
     }
 
-	void Draw(Shader& gridShader)
+	void Draw()
 	{
+        gridShader.use();
         glBindVertexArray(vao);
         glDrawElements(GL_LINES, length, GL_UNSIGNED_INT, NULL);
         glBindVertexArray(0);
 	}
 };
 
-// https://blog.lapingames.com/draw-circle-glsl-shader/
+class RegularPolygon
+{
+private:
+    GLuint vao, vbo;
+    Shader& rpShader;
+    int num;
+    // @TODO
+    //GLuint ibo;
+public:
+    // https://blog.lapingames.com/draw-circle-glsl-shader/
+    RegularPolygon(Shader& _rpShader, int _num) : rpShader(_rpShader), num(_num)
+    {
+        std::vector<glm::vec3> vertices;
+        vertices.reserve(num);
+        
+        float radius = 0.5;
+        double diff = (2 * glm::pi<double>()) / num;
+        for (double i = 0; i < 2 * glm::pi<double>(); i += diff)
+        {
+            vertices.push_back(glm::vec3(cos(i) * radius, 0.0f, sin(i) * radius));
+        }
+
+        glGenVertexArrays(1, &vao);
+        glBindVertexArray(vao);
+        glGenBuffers(1, &vbo);
+        glBindBuffer(GL_ARRAY_BUFFER, vbo);
+
+        glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec3), glm::value_ptr(vertices[0]), GL_STATIC_DRAW);
+        glEnableVertexAttribArray(0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
+
+        // @TODO 초기화 안해도되나?
+        glBindVertexArray(0);
+        //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+        rpShader.use();
+        glm::mat4 model = glm::mat4(1.0f);
+        rpShader.setMat4("model", model);
+    }
+
+    // @TODO 구현위치
+    ~RegularPolygon()
+    {
+        glDeleteVertexArrays(1, &vao);
+        glDeleteBuffers(1, &vbo);
+
+        // @TODO
+        //glDeleteBuffers(1, &ibo);
+    }
+
+    void DrawLoop()
+    {
+        rpShader.use();
+        glBindVertexArray(vao);
+        glDrawArrays(GL_LINE_LOOP, 0, num);
+        glBindVertexArray(0);
+    }
+
+    void DrawFan()
+    {
+        rpShader.use();
+        glBindVertexArray(vao);
+        glDrawArrays(GL_TRIANGLE_FAN, 0, num);
+        glBindVertexArray(0);
+    }
+};
+
 class Circle
 {
 private:
     GLuint vao, vbo;
+    Shader& circleShader;
+    // @TODO
+    //GLuint ibo;
 public:
-    Circle(Shader& circleShader)
+    // https://blog.lapingames.com/draw-circle-glsl-shader/
+    Circle(Shader& _circleShader) : circleShader(_circleShader)
     {
+        float right = 0.5;
+        float bottom = -0.5;
+        float left = -0.5;
+        float top = 0.5;
+        float quad[20] = 
+        {
+            //x, y, z,          // lx, ly
+            right, 0, bottom,   1.0, -1.0,
+            right, 0, top,      1.0, 1.0,
+            left, 0, top,       -1.0, 1.0,
+            left, 0, bottom,    -1.0, -1.0,
+        };
 
+        glGenVertexArrays(1, &vao);
+        glBindVertexArray(vao);
+        glGenBuffers(1, &vbo);
+        glBindBuffer(GL_ARRAY_BUFFER, vbo);
+
+        glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 20, quad, GL_STATIC_DRAW);
+        glEnableVertexAttribArray(0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 20, 0);
+        glEnableVertexAttribArray(1);
+        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 20, (void*)(sizeof(float) * 3));
+        // @NOTE
+        //#define BUFFER_OFFSET(i) ((char *)NULL + (i))
+        //glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 20, BUFFER_OFFSET(12));
+
+
+        // @TODO 초기화 안해도되나?
+        glBindVertexArray(0);
+        //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+        circleShader.use();
+        glm::mat4 model = glm::mat4(1.0f);
+        circleShader.setMat4("model", model);
     }
 
-    // @TODO 구현위치
-    ~Circle()
+    void Draw()
     {
-        glDeleteVertexArrays(1, &vao);
-        glDeleteBuffers(1, &vbo);
-        //glDeleteBuffers(1, &ibo);
+        circleShader.use();
+        glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
     }
 };
 
