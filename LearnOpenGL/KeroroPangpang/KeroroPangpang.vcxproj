@@ -22,8 +22,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{341b0bfc-108b-4f77-8e4b-c0ccbed71c9c}</ProjectGuid>
-    <RootNamespace>Breakout</RootNamespace>
+    <ProjectGuid>{b777f05c-5806-4820-b06e-1eed3448e8f2}</ProjectGuid>
+    <RootNamespace>KeroroPangpang</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

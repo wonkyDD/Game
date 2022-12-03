@@ -22,8 +22,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{636bf767-8921-490b-9574-e01f402dfd6e}</ProjectGuid>
-    <RootNamespace>Asteroid</RootNamespace>
+    <ProjectGuid>{dff0f013-c8c0-42f9-b528-7433bb8c4dbd}</ProjectGuid>
+    <RootNamespace>KartRider</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
