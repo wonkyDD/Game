@@ -32,10 +32,10 @@
     <None Include="grid_fs.hlsl">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="circle_vs.hlsl">
+    <None Include="regular_polygon_vs.hlsl">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="circle_fs.hlsl">
+    <None Include="regular_polygon_fs.hlsl">
       <Filter>Shaders</Filter>
     </None>
     <None Include="cursor_vs.hlsl">
