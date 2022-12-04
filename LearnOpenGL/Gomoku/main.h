@@ -26,7 +26,8 @@ const unsigned int WINDOW_HEIGHT = 1600;
 // @TODO
 //Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 Camera camera(glm::vec3(0.0f, 3.0f, 0.0f));
-
+glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, 0.1f, 100.0f);
+glm::vec3 mousePos = glm::vec3(0.0f);
 
 int init(const char* caption = "Gomoku");
 void processInput(GLFWwindow* window);
@@ -86,14 +87,45 @@ void processInput(GLFWwindow* window)
 
 void cursorPosCallback(GLFWwindow* window, double xposIn, double yposIn)
 {
-    // @TODO screen space -> clip/view/world(?) space
+    // @TODO screen space -> world space
     // https://stackoverflow.com/questions/7692988/opengl-math-projecting-screen-space-to-world-space-coords
-
-
+    // https://stackoverflow.com/questions/46749675/opengl-mouse-coordinates-to-space-coordinates/46752492#46752492
     float xpos = static_cast<float>(xposIn);
     float ypos = static_cast<float>(yposIn);
 
-    //printf("%f  %f\n", xpos, ypos);
+
+    // 1. mousePos를 ndc로 변환
+    float x_ndc = 2 * (xpos / WINDOW_WIDTH) - 1.0;
+    float y_ndc = - 2 * (ypos / WINDOW_HEIGHT) + 1.0;
+    //printf("%f  %f\n", x_ndc, y_ndc);
+    
+
+    // 2. screen -> world로 공간변환
+    glm::mat4 screen2world = glm::inverse(projection * camera.GetViewMatrix());
+
+    // @TODO y_ndc위치와 0.0이 아닌 -1.0
+    //glm::vec4 screenMousePos = glm::vec4(x_ndc, 0.0f, y_ndc, 1.0f);
+    //glm::vec4 screenMousePos = glm::vec4(x_ndc, -1.0f, y_ndc, 1.0f);
+    
+    // @TODO 0.0 vs -1.0
+    //glm::vec4 screenMousePos = glm::vec4(x_ndc, y_ndc, 0.0f, 1.0f);
+    glm::vec4 screenMousePos = glm::vec4(x_ndc, y_ndc, -1.0f, 1.0f);
+    glm::vec4 worldMousePos = screen2world * screenMousePos;
+
+    // @TODO unProject 사용
+    //glm::unProject()
+
+
+    //printf("%f  %f  %f  %f\n", worldMousePos.x, worldMousePos.y, worldMousePos.z, worldMousePos.w);
+
+
+    // @TODO w로 나눠줘야 하는가?
+    //worldMousePos.x /= worldMousePos.w;
+    //worldMousePos.z /= worldMousePos.w;
+    //printf("%f  %f\n", worldMousePos.x, worldMousePos.z);
+    mousePos.x = worldMousePos.x;
+    mousePos.y = 0.0f;
+    mousePos.z = worldMousePos.z;
 }
 
 void framebufferSizeCallback(GLFWwindow* window, int width, int height)
