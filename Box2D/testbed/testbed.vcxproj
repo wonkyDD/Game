@@ -159,6 +159,8 @@
     <None Include="main_vs.hlsl" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="box2d\b2_types.h" />
+    <ClInclude Include="box2d\box2d.h" />
     <ClInclude Include="draw.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />
@@ -177,8 +179,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="main.h" />
+    <ClInclude Include="sajson\sajson.h" />
+    <ClInclude Include="sajson\sajson_ostream.h" />
     <ClInclude Include="shader.h" />
-    <ClInclude Include="types.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

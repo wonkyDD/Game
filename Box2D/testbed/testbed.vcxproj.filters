@@ -18,6 +18,12 @@
     <Filter Include="imgui">
       <UniqueIdentifier>{88320e4f-b698-456c-936f-d94dab71649a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="box2d">
+      <UniqueIdentifier>{37e0b237-4a4a-4048-b90e-9eab7f054348}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sajson">
+      <UniqueIdentifier>{639bdc36-bdc0-4f5e-8c97-3b4fd0e51b33}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -72,9 +78,6 @@
     <ClInclude Include="draw.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="types.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="imgui_impl_opengl3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -101,6 +104,18 @@
     </ClInclude>
     <ClInclude Include="imgui\imstb_truetype.h">
       <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="box2d\b2_types.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="box2d\box2d.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="sajson\sajson.h">
+      <Filter>sajson</Filter>
+    </ClInclude>
+    <ClInclude Include="sajson\sajson_ostream.h">
+      <Filter>sajson</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
