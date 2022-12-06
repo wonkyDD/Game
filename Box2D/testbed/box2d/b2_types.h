@@ -1,5 +1,5 @@
-#ifndef TYPES_H
-#define TYPES_H
+#ifndef B2_TYPES_H
+#define B2_TYPES_H
 
 typedef signed char	int8;
 typedef signed short int16;
@@ -8,4 +8,4 @@ typedef unsigned char uint8;
 typedef unsigned short uint16;
 typedef unsigned int uint32;
 
-#endif // TYPES_H
+#endif // B2_TYPES_H
