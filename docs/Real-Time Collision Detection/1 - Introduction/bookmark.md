@@ -1,7 +1,7 @@
 >Start   : 2022_12_05_MON<br>
->Finish  : 
+>Finish  : 2022_12_05_MON
 
 <br>
 
 ### 2022_12_05_MON
-- [page 26] : Face culling/Fragements
+- [page 41]
