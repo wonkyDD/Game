@@ -1,5 +1,5 @@
 >Start   : 2022_12_09_FRI<br>
->Finish  : 
+>Finish  : 2022_12_13_TUE
 
 <br>
 
@@ -10,10 +10,7 @@
 - [page 89] : Figure 3.9; height lines
 
 #### 2022_12_11_SUN
-- [page 99] : Figure 3.17; convec quad, self-intersecting, degenerate
+- [page 99] : Figure 3.17; convex quad, self-intersecting, degenerate
 
 #### 2022_12_12_MON
 - [page 108] : 3.10 Voronoi Regions
-
-#### 2022_12_13_TUE
-- [page ] : 
