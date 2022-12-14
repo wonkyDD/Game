@@ -140,12 +140,8 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="circle_fs.hlsl" />
-    <None Include="circle_vs.hlsl" />
     <None Include="regular_polygon_fs.hlsl" />
     <None Include="regular_polygon_vs.hlsl" />
-    <None Include="cursor_fs.hlsl" />
-    <None Include="cursor_vs.hlsl" />
     <None Include="grid_fs.hlsl" />
     <None Include="grid_vs.hlsl" />
   </ItemGroup>
@@ -154,7 +150,6 @@
     <ClInclude Include="draw.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="shader.h" />
-    <ClInclude Include="UI.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

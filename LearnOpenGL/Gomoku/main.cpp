@@ -28,16 +28,16 @@ int main()
     Grid grid(gridShader);
     RegularPolygon rp(rpShader, 1000);
 
-    float i = 0;
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
     while (!glfwWindowShouldClose(g_mainWindow))
     {
         processInput(g_mainWindow);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        i += 0.00001;
         grid.Draw();
-        rp.DrawLoop(glm::vec3(mousePos.x, 0.0f, mousePos.z));
-        //rp.DrawLoop(glm::vec3(-0.5f, 0.0f, -0.5f));
+        rp.Draw(glm::vec3(mousePos.x, 0.0f, mousePos.z), GL_TRIANGLE_FAN);
 
         glfwSwapBuffers(g_mainWindow);
         glfwPollEvents();
