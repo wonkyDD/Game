@@ -6,17 +6,21 @@
 #include <crtdbg.h>
 #endif
 #include <stdio.h>
+//#include <assert.h>
 #include <chrono>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include "draw.h"
-//#include "imgui/imgui.h"
+// @TODO ImGui
+#include "imgui/imgui.h"
 #include "imgui_impl_opengl3.h"
 #include "imgui_impl_glfw.h"
+#include "draw.h"
 
 // @TODO lib를 ide빌드가 release, debug 인지에 따라 알맞게 바꿔줄것
 #pragma comment(lib, "opengl32.lib")
 #pragma comment(lib, "glfw3.lib")
+
+//#define ASSERT(x) assert(x) 
 
 GLFWwindow* g_mainWindow = nullptr;
 const unsigned int WINDOW_WIDTH = 1920;
