@@ -11,7 +11,6 @@
 #include "shader.h"
 #include "camera.h"
 #include "draw.h"
-#include "UI.h"
 
 // @TODO lib를 ide빌드가 release, debug 인지에 따라 알맞게 바꿔줄것
 // (glfw release빌드 추가)
@@ -97,16 +96,17 @@ void cursorPosCallback(GLFWwindow* window, double xposIn, double yposIn)
     // 1. mousePos를 ndc로 변환
     float x_ndc = 2 * (xpos / WINDOW_WIDTH) - 1.0;
     float y_ndc = - 2 * (ypos / WINDOW_HEIGHT) + 1.0;
-    //printf("%f  %f\n", x_ndc, y_ndc);
-    
+
 
     // 2. screen -> world로 공간변환
     glm::mat4 screen2world = glm::inverse(projection * camera.GetViewMatrix());
+
 
     // @TODO y_ndc위치와 0.0이 아닌 -1.0
     //glm::vec4 screenMousePos = glm::vec4(x_ndc, 0.0f, y_ndc, 1.0f);
     //glm::vec4 screenMousePos = glm::vec4(x_ndc, -1.0f, y_ndc, 1.0f);
     
+
     // @TODO 0.0 vs -1.0
     //glm::vec4 screenMousePos = glm::vec4(x_ndc, y_ndc, 0.0f, 1.0f);
     glm::vec4 screenMousePos = glm::vec4(x_ndc, y_ndc, -1.0f, 1.0f);
@@ -116,13 +116,16 @@ void cursorPosCallback(GLFWwindow* window, double xposIn, double yposIn)
     //glm::unProject()
 
 
-    //printf("%f  %f  %f  %f\n", worldMousePos.x, worldMousePos.y, worldMousePos.z, worldMousePos.w);
-
-
     // @TODO w로 나눠줘야 하는가?
     //worldMousePos.x /= worldMousePos.w;
     //worldMousePos.z /= worldMousePos.w;
-    //printf("%f  %f\n", worldMousePos.x, worldMousePos.z);
+    
+    // @TODO 
+    // 왜 하필 카메라 y좌표와 동일하게 맞춰줘야 하는지?
+    worldMousePos.x *= 3.0f;
+    worldMousePos.z *= 3.0f;
+    printf("%f  %f\n", worldMousePos.x, worldMousePos.z);
+
     mousePos.x = worldMousePos.x;
     mousePos.y = 0.0f;
     mousePos.z = worldMousePos.z;

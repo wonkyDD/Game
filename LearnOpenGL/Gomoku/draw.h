@@ -114,7 +114,8 @@ public:
         std::vector<glm::vec3> vertices;
         vertices.reserve(num);
         
-        float radius = 0.5;
+        float radius = 1.0f / 15 * 0.5f;
+
         double diff = (2 * glm::pi<double>()) / num;
         for (double i = 0; i < 2 * glm::pi<double>(); i += diff)
         {
@@ -146,7 +147,7 @@ public:
         //glDeleteBuffers(1, &ibo);
     }
 
-    void DrawLoop(glm::vec3 translate = glm::vec3(0.0f))
+    void Draw(glm::vec3 translate = glm::vec3(0.0f), GLenum e = GL_LINE_LOOP)
     {
         rpShader.use();
         glm::mat4 model = glm::mat4(1.0f);
@@ -154,73 +155,8 @@ public:
         rpShader.setMat4("model", model);
 
         glBindVertexArray(vao);
-        glDrawArrays(GL_LINE_LOOP, 0, num);
+        glDrawArrays(e, 0, num);
         glBindVertexArray(0);
-    }
-
-    void DrawFan()
-    {
-        rpShader.use();
-        glBindVertexArray(vao);
-        glDrawArrays(GL_TRIANGLE_FAN, 0, num);
-        glBindVertexArray(0);
-    }
-};
-
-// @TODO circle을 fs에서 그리기 (circle_*.hlsl)
-class Circle
-{
-private:
-    GLuint vao, vbo;
-    Shader& circleShader;
-    // @TODO
-    //GLuint ibo;
-public:
-    // https://blog.lapingames.com/draw-circle-glsl-shader/
-    Circle(Shader& _circleShader) : circleShader(_circleShader)
-    {
-        float right = 0.5;
-        float bottom = -0.5;
-        float left = -0.5;
-        float top = 0.5;
-        float quad[20] = 
-        {
-            //x, y, z,          // lx, ly
-            right, 0, bottom,   1.0, -1.0,
-            right, 0, top,      1.0, 1.0,
-            left, 0, top,       -1.0, 1.0,
-            left, 0, bottom,    -1.0, -1.0,
-        };
-
-        glGenVertexArrays(1, &vao);
-        glBindVertexArray(vao);
-        glGenBuffers(1, &vbo);
-        glBindBuffer(GL_ARRAY_BUFFER, vbo);
-
-        glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 20, quad, GL_STATIC_DRAW);
-        glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 20, 0);
-        glEnableVertexAttribArray(1);
-        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 20, (void*)(sizeof(float) * 3));
-        // @NOTE
-        //#define BUFFER_OFFSET(i) ((char *)NULL + (i))
-        //glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 20, BUFFER_OFFSET(12));
-
-
-        // @TODO 초기화 안해도되나?
-        glBindVertexArray(0);
-        //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-        circleShader.use();
-        glm::mat4 model = glm::mat4(1.0f);
-        circleShader.setMat4("model", model);
-    }
-
-    void Draw()
-    {
-        circleShader.use();
-        glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
     }
 };
 
