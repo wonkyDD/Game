@@ -1,7 +1,7 @@
 #ifndef DRAW_H
 #define DRAW_H
 
-#include "types.h"
+#include "box2d/b2_types.h"
 
 struct Camera
 {
