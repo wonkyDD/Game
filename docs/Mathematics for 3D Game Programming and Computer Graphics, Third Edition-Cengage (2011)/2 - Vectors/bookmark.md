@@ -1,13 +1,7 @@
 >Start   : 2022_12_14_WED<br>
->Finish  : 
+>Finish  : 2022_12_15_THUR
 
 <br>
 
 #### 2022_12_14_WED 
 - [page 40] :  Cross Product, Theorem 2.7
-
-#### 2022_12_15_THUR 
-- [page ] : 
-
-#### _ _ _ 
-- [page ] : 
