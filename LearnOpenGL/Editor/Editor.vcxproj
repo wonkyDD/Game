@@ -22,8 +22,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{4b57e3db-31cc-4f2f-ac7b-776b39c90899}</ProjectGuid>
-    <RootNamespace>ModelViewer</RootNamespace>
+    <ProjectGuid>{06facded-6364-4162-8fb3-17d7b952819e}</ProjectGuid>
+    <RootNamespace>Editor</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
