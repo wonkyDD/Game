@@ -22,7 +22,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{3d4bf808-cbc6-4d10-ad87-eadcba971183}</ProjectGuid>
+    <ProjectGuid>{f2b21107-ab2f-4e65-9796-0d04251e61c3}</ProjectGuid>
     <RootNamespace>CrazyArcade</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>

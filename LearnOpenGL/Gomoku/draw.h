@@ -3,8 +3,12 @@
 
 #include <vector>
 #include "shader.h"
+#include "math.h"
 
-
+// @TODO grid rendering references
+// https://madebyevan.com/shaders/grid/
+// https://github.com/martin-pr/possumwood/wiki/Infinite-ground-plane-using-GLSL-shaders
+// http://asliceofrendering.com/scene%20helper/2020/01/05/InfiniteGrid/
 class Grid
 {
 private:
@@ -12,11 +16,15 @@ private:
     GLuint length;
     Shader& gridShader;
 public:
-    // https ://en.wikipedia.org/wiki/Gomoku
-    const int Slices = 15;
+    // grid with 15 by 15 lines (https://en.wikipedia.org/wiki/Gomoku)
+    const int Slices = 15 - 1;
+    //bool* placed;
 
 	Grid(Shader& _gridShader) : gridShader(_gridShader)
     {
+        // @TODO 2d-array dynamic allocation
+        //placed = (bool*)malloc(sizeof(bool) * (Slices+1) * (Slices + 1));
+        
         std::vector<glm::vec3> vertices;
         std::vector<glm::uvec4> indices;
 
@@ -38,7 +46,7 @@ public:
                 int row1 = j * (Slices + 1);
                 int row2 = (j + 1) * (Slices + 1);
 
-                // upper-left 부터 counter-clock 방향으로 GL_LINE 렌더링 (2개씩 읽어들임)
+                // render grid element (2+2 GL_LINES) from upper-left in counter-clockwise way
                 indices.push_back(glm::uvec4(row1 + i, row1 + i + 1, row1 + i + 1, row2 + i + 1));
                 indices.push_back(glm::uvec4(row2 + i + 1, row2 + i, row2 + i, row1 + i));
             }
@@ -59,7 +67,7 @@ public:
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(glm::uvec4), glm::value_ptr(indices[0]), GL_STATIC_DRAW);
 
-        // 초기화
+        // initialize
         glBindVertexArray(0);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
         glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -82,12 +90,14 @@ public:
         gridShader.setFloat("color.a", 1.0f);
     }
 
-    // @TODO 구현위치
     ~Grid()
     {
         glDeleteVertexArrays(1, &vao);
         glDeleteBuffers(1, &vbo);
         glDeleteBuffers(1, &ibo);
+        
+        //free(placed);
+        //placed = nullptr;
     }
 
 	void Draw()
@@ -97,29 +107,35 @@ public:
         glDrawElements(GL_LINES, length, GL_UNSIGNED_INT, NULL);
         glBindVertexArray(0);
 	}
+
+    //constexpr int getSlices() { return Slices; }
 };
 
+// @TODO draw small circle on grid centor for indication
 class RegularPolygon
 {
 private:
     GLuint vao, vbo;
     Shader& rpShader;
-    int num;
+    int side;
     // @TODO
     //GLuint ibo;
 public:
+    bool isBlack = true;
+    float alpha = 0.5f;
+    const float Radius = 1.0f / 15 * 0.5f;
+    
     // https://blog.lapingames.com/draw-circle-glsl-shader/
-    RegularPolygon(Shader& _rpShader, int _num) : rpShader(_rpShader), num(_num)
+    RegularPolygon(Shader& _rpShader, int _side = 20) : rpShader(_rpShader), side(_side)
     {
+        // @TODO replace vector with fixed-size(== side) array
         std::vector<glm::vec3> vertices;
-        vertices.reserve(num);
-        
-        float radius = 1.0f / 15 * 0.5f;
+        vertices.reserve(side);
 
-        double diff = (2 * glm::pi<double>()) / num;
+        double diff = (2 * glm::pi<double>()) / side;
         for (double i = 0; i < 2 * glm::pi<double>(); i += diff)
         {
-            vertices.push_back(glm::vec3(cos(i) * radius, 0.0f, sin(i) * radius));
+            vertices.push_back(glm::vec3(cos(i) * Radius, 0.0f, sin(i) * Radius));
         }
 
         glGenVertexArrays(1, &vao);
@@ -131,7 +147,7 @@ public:
         glEnableVertexAttribArray(0);
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
 
-        // @TODO 초기화 안해도되나?
+        // @TODO no need to initialize?
         glBindVertexArray(0);
         //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
         glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -152,10 +168,12 @@ public:
         rpShader.use();
         glm::mat4 model = glm::mat4(1.0f);
         model = glm::translate(model, glm::vec3(translate.x, translate.y, translate.z));
+        rpShader.setBool("isBlack", isBlack);
+        rpShader.setFloat("alpha", alpha);
         rpShader.setMat4("model", model);
 
         glBindVertexArray(vao);
-        glDrawArrays(e, 0, num);
+        glDrawArrays(e, 0, side);
         glBindVertexArray(0);
     }
 };

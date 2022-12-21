@@ -22,7 +22,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{21a51eda-7d4a-429e-9d9a-70f73188b8e4}</ProjectGuid>
+    <ProjectGuid>{e467c0ad-4567-4450-a9dd-c83ba7937ba4}</ProjectGuid>
     <RootNamespace>FallGuys</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>

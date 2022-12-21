@@ -22,7 +22,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{dff0f013-c8c0-42f9-b528-7433bb8c4dbd}</ProjectGuid>
+    <ProjectGuid>{57df2417-b542-42ba-86ec-93ed7c10746b}</ProjectGuid>
     <RootNamespace>KartRider</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
