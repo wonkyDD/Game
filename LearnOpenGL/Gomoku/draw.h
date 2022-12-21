@@ -121,9 +121,11 @@ private:
     // @TODO
     //GLuint ibo;
 public:
-    bool isBlack = true;
-    float alpha = 0.5f;
     const float Radius = 1.0f / 15 * 0.5f;
+    bool isBlack = true;
+    const float placedAlpha = 1.0f;
+    const float hoveringAlpha = 0.3f;
+    float alpha = 0.5f;
     
     // https://blog.lapingames.com/draw-circle-glsl-shader/
     RegularPolygon(Shader& _rpShader, int _side = 20) : rpShader(_rpShader), side(_side)

@@ -13,18 +13,7 @@
 * - feat:       timer
 * - feat:       sound features (bgm, circle-placed sound, timer sound) using OpenAL or FMOD
 */
-
 #include "main.h"
-// @TODO class for game manager?
-#define GRID_SLICES 15
-
-// @TODO class for game manager?
-struct Circle
-{
-    bool placed = false;
-    bool isBlack = true;
-};
-
 
 int main()
 {
@@ -48,6 +37,8 @@ int main()
     float a = 1.0f;
     glClearColor(r, g, b, a);
 
+    // @TODO make Game class as singletone
+    Game game;
     Grid grid(gridShader);
     RegularPolygon rp(rpShader);
 
@@ -55,7 +46,7 @@ int main()
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     // @TODO class for game manager?
-    Circle placed[GRID_SLICES][GRID_SLICES];
+    //Circle placed[GRID_SLICES][GRID_SLICES];
 
     while (!glfwWindowShouldClose(g_mainWindow))
     {
@@ -100,17 +91,22 @@ int main()
         // @HACK not render in this case
         if (b)
         {
-            if (isLeftReleased && !placed[x][z].placed)
+            if (isLeftReleased && !game.circles[x][z].placed)
             {
-                placed[x][z].placed = true;
-                placed[x][z].isBlack = rp.isBlack;
+                game.circles[x][z].placed = true;
+                game.circles[x][z].isBlack = rp.isBlack;
                 rp.isBlack = !rp.isBlack;
                 isLeftReleased = false;
             }
 
-            if (!placed[x][z].placed)
+            if (isLeftReleased && game.circles[x][z].placed)
             {
-                rp.alpha = 0.5f;
+                isLeftReleased = false;
+            }
+
+            if (!game.circles[x][z].placed)
+            {
+                rp.alpha = rp.hoveringAlpha;
                 rp.Draw(glm::vec3(mousePos.x, 0.0f, mousePos.z), GL_TRIANGLE_FAN);
             }
         }
@@ -119,13 +115,13 @@ int main()
         {
             for (int j = 0; j <= grid.Slices; ++j)
             {
-                if (placed[i][j].placed)
+                if (game.circles[i][j].placed)
                 {
                     bool btemp = rp.isBlack;
                     float ftemp = rp.alpha;
 
-                    rp.isBlack = placed[i][j].isBlack;
-                    rp.alpha = 1.0f;
+                    rp.isBlack = game.circles[i][j].isBlack;
+                    rp.alpha = rp.placedAlpha;
                     rp.Draw(glm::vec3(-0.5f + step*i, 0.0f, -0.5f + step * j), GL_TRIANGLE_FAN);
                     
                     rp.isBlack = btemp;

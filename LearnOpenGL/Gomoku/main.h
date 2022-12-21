@@ -12,6 +12,10 @@
 #include "camera.h"
 #include "draw.h"
 #include "math.h"
+#include "game.h"
+#include "imgui/imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
 
 // @TODO change lib depening on IDE build mode (+ add glfw release build option)
 #pragma comment(lib, "opengl32.lib")
