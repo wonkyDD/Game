@@ -45,6 +45,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KartRider", "KartRider\Kart
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinSock", "WinSock\WinSock.vcxproj", "{308D3FB7-0326-406B-B9A6-9D9F926A6258}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Poker", "Poker\Poker.vcxproj", "{6C340AE6-FFD7-47B3-A01D-66F4EDFFBA56}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -221,6 +223,14 @@ Global
 		{308D3FB7-0326-406B-B9A6-9D9F926A6258}.Release|x64.Build.0 = Release|x64
 		{308D3FB7-0326-406B-B9A6-9D9F926A6258}.Release|x86.ActiveCfg = Release|Win32
 		{308D3FB7-0326-406B-B9A6-9D9F926A6258}.Release|x86.Build.0 = Release|Win32
+		{6C340AE6-FFD7-47B3-A01D-66F4EDFFBA56}.Debug|x64.ActiveCfg = Debug|x64
+		{6C340AE6-FFD7-47B3-A01D-66F4EDFFBA56}.Debug|x64.Build.0 = Debug|x64
+		{6C340AE6-FFD7-47B3-A01D-66F4EDFFBA56}.Debug|x86.ActiveCfg = Debug|Win32
+		{6C340AE6-FFD7-47B3-A01D-66F4EDFFBA56}.Debug|x86.Build.0 = Debug|Win32
+		{6C340AE6-FFD7-47B3-A01D-66F4EDFFBA56}.Release|x64.ActiveCfg = Release|x64
+		{6C340AE6-FFD7-47B3-A01D-66F4EDFFBA56}.Release|x64.Build.0 = Release|x64
+		{6C340AE6-FFD7-47B3-A01D-66F4EDFFBA56}.Release|x86.ActiveCfg = Release|Win32
+		{6C340AE6-FFD7-47B3-A01D-66F4EDFFBA56}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
