@@ -146,6 +146,7 @@
     <ClCompile Include="imgui_impl_glfw.cpp" />
     <ClCompile Include="imgui_impl_opengl3.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="yyjson\yyjson.c" />
   </ItemGroup>
   <ItemGroup>
     <None Include="regular_polygon_fs.hlsl" />
@@ -169,6 +170,7 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="math.h" />
     <ClInclude Include="shader.h" />
+    <ClInclude Include="yyjson\yyjson.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
