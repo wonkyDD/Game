@@ -159,4 +159,4 @@ private:
         }
     }
 };
-#endif
+#endif // SHADER_H
