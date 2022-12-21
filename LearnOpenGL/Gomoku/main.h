@@ -11,41 +11,56 @@
 #include "shader.h"
 #include "camera.h"
 #include "draw.h"
+#include "math.h"
 
-// @TODO lib를 ide빌드가 release, debug 인지에 따라 알맞게 바꿔줄것
-// (glfw release빌드 추가)
+// @TODO change lib depening on IDE build mode (+ add glfw release build option)
 #pragma comment(lib, "opengl32.lib")
 #pragma comment(lib, "glfw3.lib")
 
-
 GLFWwindow* g_mainWindow = nullptr;
-const char* glslVersion = NULL;
 const unsigned int WINDOW_WIDTH = 1600;
 const unsigned int WINDOW_HEIGHT = 1600;
-// @TODO
-//Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 Camera camera(glm::vec3(0.0f, 3.0f, 0.0f));
 glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, 0.1f, 100.0f);
 glm::vec3 mousePos = glm::vec3(0.0f);
+bool isLeftReleased = false;
 
 int init(const char* caption = "Gomoku");
 void processInput(GLFWwindow* window);
 void errorCallback(int error, const char* description);
 void framebufferSizeCallback(GLFWwindow* window, int width, int height);
 void cursorPosCallback(GLFWwindow* window, double xposIn, double yposIn);
+void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
 
 
 int init(const char* caption)
 {
+#if defined(_DEBUG)
+    //printf("//////////////////\n");
+    //printf("//  DEBUG MODE  //\n");
+    //printf("//////////////////\n");
+
+    // @TODO change lib depening on IDE build mode (+ add glfw release build option)
+#endif // _DEBUG
+
     if (glfwInit() == 0)
     {
         fprintf(stderr, "Failed to initialize GLFW\n");
         return 0;
     }
 
+    // https://stackoverflow.com/questions/67239235/how-do-i-create-a-centered-glfw-window
+    int count, monitorX, monitorY;
+    GLFWmonitor** monitors = glfwGetMonitors(&count);
+    // @TODO monitor index
+    const GLFWvidmode* videoMode = glfwGetVideoMode(monitors[0]);
+    glfwGetMonitorPos(monitors[0], &monitorX, &monitorY);
+
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    // @TODO independent of resize issue
+    glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 #ifdef __APPLE__
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
@@ -58,10 +73,17 @@ int init(const char* caption)
         return 0;
     }
 
+    glfwSetWindowPos(g_mainWindow,
+        monitorX + (videoMode->width - WINDOW_WIDTH) / 2,
+        monitorY + (videoMode->height - WINDOW_HEIGHT) / 2);
+    
+    //glfwShowWindow(g_mainWindow);
+        
     glfwMakeContextCurrent(g_mainWindow);
     glfwSetErrorCallback(errorCallback);
     glfwSetFramebufferSizeCallback(g_mainWindow, framebufferSizeCallback);
     glfwSetCursorPosCallback(g_mainWindow, cursorPosCallback);
+    glfwSetMouseButtonCallback(g_mainWindow, mouseButtonCallback);
 
     // @TODO InputMode
     //glfwSetInputMode(g_mainWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -86,55 +108,49 @@ void processInput(GLFWwindow* window)
 
 void cursorPosCallback(GLFWwindow* window, double xposIn, double yposIn)
 {
-    // @TODO screen space -> world space
-    // https://stackoverflow.com/questions/7692988/opengl-math-projecting-screen-space-to-world-space-coords
-    // https://stackoverflow.com/questions/46749675/opengl-mouse-coordinates-to-space-coordinates/46752492#46752492
     float xpos = static_cast<float>(xposIn);
     float ypos = static_cast<float>(yposIn);
 
-
-    // 1. mousePos를 ndc로 변환
     float x_ndc = 2 * (xpos / WINDOW_WIDTH) - 1.0;
     float y_ndc = - 2 * (ypos / WINDOW_HEIGHT) + 1.0;
-
-
-    // 2. screen -> world로 공간변환
     glm::mat4 screen2world = glm::inverse(projection * camera.GetViewMatrix());
 
-
-    // @TODO y_ndc위치와 0.0이 아닌 -1.0
+    // @TODO y_ndc pos
     //glm::vec4 screenMousePos = glm::vec4(x_ndc, 0.0f, y_ndc, 1.0f);
     //glm::vec4 screenMousePos = glm::vec4(x_ndc, -1.0f, y_ndc, 1.0f);
-    
 
     // @TODO 0.0 vs -1.0
-    //glm::vec4 screenMousePos = glm::vec4(x_ndc, y_ndc, 0.0f, 1.0f);
-    glm::vec4 screenMousePos = glm::vec4(x_ndc, y_ndc, -1.0f, 1.0f);
+    //glm::vec4 screenMousePos = glm::vec4(x_ndc, y_ndc, -1.0f, 1.0f);
+    glm::vec4 screenMousePos = glm::vec4(x_ndc, y_ndc, 0.0f, 1.0f);
     glm::vec4 worldMousePos = screen2world * screenMousePos;
 
-    // @TODO unProject 사용
-    //glm::unProject()
-
-
-    // @TODO w로 나눠줘야 하는가?
-    //worldMousePos.x /= worldMousePos.w;
-    //worldMousePos.z /= worldMousePos.w;
-    
-    // @TODO 
-    // 왜 하필 카메라 y좌표와 동일하게 맞춰줘야 하는지?
+    // @TODO reason why multiplied by value equal to cameraPos.y
     worldMousePos.x *= 3.0f;
     worldMousePos.z *= 3.0f;
-    printf("%f  %f\n", worldMousePos.x, worldMousePos.z);
 
     mousePos.x = worldMousePos.x;
     mousePos.y = 0.0f;
     mousePos.z = worldMousePos.z;
 }
 
+void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
+{
+    if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
+    {
+        //printf("press\n");
+    }
+
+    if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE)
+    {
+        //printf("release\n");
+        isLeftReleased = true;
+    }
+}
+
 void framebufferSizeCallback(GLFWwindow* window, int width, int height)
 {
     glViewport(0, 0, width, height);
-    // @TODO screen coordinate변환을 위해서 depth설정도 필요한데 (viewport포함)
+    // @TODO screen coordinate transform == glViewport + glDepthRange
     //glDepthRange(n, f);
 }
 
