@@ -43,8 +43,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FallGuys", "FallGuys\FallGu
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KartRider", "KartRider\KartRider.vcxproj", "{57DF2417-B542-42BA-86EC-93ED7C10746B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinSock", "WinSock\WinSock.vcxproj", "{308D3FB7-0326-406B-B9A6-9D9F926A6258}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Poker", "Poker\Poker.vcxproj", "{6C340AE6-FFD7-47B3-A01D-66F4EDFFBA56}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TempleRun", "TempleRun\TempleRun.vcxproj", "{5171116F-0001-4F9A-AEA7-C8C0A6A3D897}"
@@ -54,6 +52,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tetris", "Tetris\Tetris.vcxproj", "{10042182-78D8-4D1E-BE97-CC54DEC24D03}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TapSonic", "TapSonic\TapSonic.vcxproj", "{C086FE82-B94D-46D1-A397-3ACCE6BF990D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Gomoku-server", "Gomoku-server\Gomoku-server.vcxproj", "{6AA1FCFC-C4A9-40A9-A561-78205DDC2C4E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -223,14 +223,6 @@ Global
 		{57DF2417-B542-42BA-86EC-93ED7C10746B}.Release|x64.Build.0 = Release|x64
 		{57DF2417-B542-42BA-86EC-93ED7C10746B}.Release|x86.ActiveCfg = Release|Win32
 		{57DF2417-B542-42BA-86EC-93ED7C10746B}.Release|x86.Build.0 = Release|Win32
-		{308D3FB7-0326-406B-B9A6-9D9F926A6258}.Debug|x64.ActiveCfg = Debug|x64
-		{308D3FB7-0326-406B-B9A6-9D9F926A6258}.Debug|x64.Build.0 = Debug|x64
-		{308D3FB7-0326-406B-B9A6-9D9F926A6258}.Debug|x86.ActiveCfg = Debug|Win32
-		{308D3FB7-0326-406B-B9A6-9D9F926A6258}.Debug|x86.Build.0 = Debug|Win32
-		{308D3FB7-0326-406B-B9A6-9D9F926A6258}.Release|x64.ActiveCfg = Release|x64
-		{308D3FB7-0326-406B-B9A6-9D9F926A6258}.Release|x64.Build.0 = Release|x64
-		{308D3FB7-0326-406B-B9A6-9D9F926A6258}.Release|x86.ActiveCfg = Release|Win32
-		{308D3FB7-0326-406B-B9A6-9D9F926A6258}.Release|x86.Build.0 = Release|Win32
 		{6C340AE6-FFD7-47B3-A01D-66F4EDFFBA56}.Debug|x64.ActiveCfg = Debug|x64
 		{6C340AE6-FFD7-47B3-A01D-66F4EDFFBA56}.Debug|x64.Build.0 = Debug|x64
 		{6C340AE6-FFD7-47B3-A01D-66F4EDFFBA56}.Debug|x86.ActiveCfg = Debug|Win32
@@ -271,6 +263,14 @@ Global
 		{C086FE82-B94D-46D1-A397-3ACCE6BF990D}.Release|x64.Build.0 = Release|x64
 		{C086FE82-B94D-46D1-A397-3ACCE6BF990D}.Release|x86.ActiveCfg = Release|Win32
 		{C086FE82-B94D-46D1-A397-3ACCE6BF990D}.Release|x86.Build.0 = Release|Win32
+		{6AA1FCFC-C4A9-40A9-A561-78205DDC2C4E}.Debug|x64.ActiveCfg = Debug|x64
+		{6AA1FCFC-C4A9-40A9-A561-78205DDC2C4E}.Debug|x64.Build.0 = Debug|x64
+		{6AA1FCFC-C4A9-40A9-A561-78205DDC2C4E}.Debug|x86.ActiveCfg = Debug|Win32
+		{6AA1FCFC-C4A9-40A9-A561-78205DDC2C4E}.Debug|x86.Build.0 = Debug|Win32
+		{6AA1FCFC-C4A9-40A9-A561-78205DDC2C4E}.Release|x64.ActiveCfg = Release|x64
+		{6AA1FCFC-C4A9-40A9-A561-78205DDC2C4E}.Release|x64.Build.0 = Release|x64
+		{6AA1FCFC-C4A9-40A9-A561-78205DDC2C4E}.Release|x86.ActiveCfg = Release|Win32
+		{6AA1FCFC-C4A9-40A9-A561-78205DDC2C4E}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
