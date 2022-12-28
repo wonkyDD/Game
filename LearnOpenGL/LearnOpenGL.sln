@@ -69,6 +69,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Minecraft", "Minecraft\Mine
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pokemon", "Pokemon\Pokemon.vcxproj", "{7E6E4C56-A34D-4176-A917-3DCC2BEA57E2}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TalesRunner", "TalesRunner\TalesRunner.vcxproj", "{F0DE7145-1369-4B5A-B87C-291FE2434075}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -341,6 +343,14 @@ Global
 		{7E6E4C56-A34D-4176-A917-3DCC2BEA57E2}.Release|x64.Build.0 = Release|x64
 		{7E6E4C56-A34D-4176-A917-3DCC2BEA57E2}.Release|x86.ActiveCfg = Release|Win32
 		{7E6E4C56-A34D-4176-A917-3DCC2BEA57E2}.Release|x86.Build.0 = Release|Win32
+		{F0DE7145-1369-4B5A-B87C-291FE2434075}.Debug|x64.ActiveCfg = Debug|x64
+		{F0DE7145-1369-4B5A-B87C-291FE2434075}.Debug|x64.Build.0 = Debug|x64
+		{F0DE7145-1369-4B5A-B87C-291FE2434075}.Debug|x86.ActiveCfg = Debug|Win32
+		{F0DE7145-1369-4B5A-B87C-291FE2434075}.Debug|x86.Build.0 = Debug|Win32
+		{F0DE7145-1369-4B5A-B87C-291FE2434075}.Release|x64.ActiveCfg = Release|x64
+		{F0DE7145-1369-4B5A-B87C-291FE2434075}.Release|x64.Build.0 = Release|x64
+		{F0DE7145-1369-4B5A-B87C-291FE2434075}.Release|x86.ActiveCfg = Release|Win32
+		{F0DE7145-1369-4B5A-B87C-291FE2434075}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
