@@ -22,7 +22,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{8de1f490-4124-4ae1-8e2e-f60150b4b0fc}</ProjectGuid>
+    <ProjectGuid>{1ae9f9be-8ba6-46af-868d-326ca63ae3e3}</ProjectGuid>
     <RootNamespace>Video</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
