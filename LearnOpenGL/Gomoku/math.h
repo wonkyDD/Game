@@ -1,24 +1,23 @@
-#ifndef MATH_H
-#define MATH_H
+#pragma once
 #include <cmath>
 
 // @TODO namespace vs function-prefix
 namespace Math
 {
 	template <typename T>
-	T max(T a, T b)
+	inline T max(T a, T b)
 	{
 		return a > b ? a : b;
 	}
 
 	template <typename T>
-	T min(T a, T b)
+	inline T min(T a, T b)
 	{
 		return a < b ? a : b;
 	}
 
 	template <typename T>
-	T clamp(T a, T low, T high)
+	inline T clamp(T a, T low, T high)
 	{
 		return max(low, min(a, high));
 	}
@@ -33,5 +32,3 @@ namespace Math
 		mat[1][1] = cos(angle);
 	}
 }
-
-#endif // MATH_H

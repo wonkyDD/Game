@@ -1,6 +1,9 @@
-#ifndef MAIN_H
-#define MAIN_H
-
+/*
+* @TODO : " " vs < >
+* - glad, glfw, stb, glm, imgui, yyjson, fmod, freetype, imguizmo, assimp, ffmpeg
+* 
+*/
+#pragma once
 #include <vector>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -17,10 +20,14 @@
 #include "draw.h"
 #include "math.h"
 #include "game.h"
+//#include <fmod/fmod.hpp>
 
 // @TODO change lib depening on IDE build mode (+ add glfw release build option)
 #pragma comment(lib, "opengl32.lib")
 #pragma comment(lib, "glfw3.lib")
+// @TODO fmodL vs fmod
+//#pragma comment(lib, "fmod_vc.lib")
+//#pragma comment(lib, "fmodL_vc.lib")
 
 GLFWwindow* g_mainWindow = nullptr;
 const unsigned int WINDOW_WIDTH = 1600;
@@ -28,7 +35,11 @@ const unsigned int WINDOW_HEIGHT = 1600;
 Camera camera(glm::vec3(0.0f, 3.0f, 0.0f));
 glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, 0.1f, 100.0f);
 glm::vec3 mousePos = glm::vec3(0.0f);
+// @TODO make Game class as singletone
+Game game;
+// @TODO input manager
 bool isLeftReleased = false;
+//bool isSPressed= false;
 
 int init(const char* caption = "Gomoku");
 void processInput(GLFWwindow* window);
@@ -66,6 +77,8 @@ int init(const char* caption)
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     // @TODO independent of resize issue
     glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+    // @TODO no title bar
+    //glfwWindowHint(GLFW_DECORATED, GLFW_FALSE);
 #ifdef __APPLE__
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
@@ -109,6 +122,17 @@ int init(const char* caption)
 void processInput(GLFWwindow* window)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) glfwSetWindowShouldClose(window, true);
+
+    //if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS && !isSPressed)
+    //{
+    //    isSPressed = true;
+    //}
+
+    //if (glfwGetKey(window, GLFW_KEY_S) == GLFW_RELEASE && isSPressed)
+    //{
+    //    isSPressed = false;
+    //    game.CheckGameOver();
+    //}
 }
 
 void cursorPosCallback(GLFWwindow* window, double xposIn, double yposIn)
@@ -155,7 +179,7 @@ void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
 void framebufferSizeCallback(GLFWwindow* window, int width, int height)
 {
     glViewport(0, 0, width, height);
-    // @TODO screen coordinate transform == glViewport + glDepthRange
+    // @NOTE screen coordinate transform == glViewport + glDepthRange
     //glDepthRange(n, f);
 }
 
@@ -163,5 +187,3 @@ void errorCallback(int error, const char* description)
 {
     fprintf(stderr, "GLFW error occured. Code: %d. Description: %s\n", error, description);
 }
-
-#endif // MAIN_H

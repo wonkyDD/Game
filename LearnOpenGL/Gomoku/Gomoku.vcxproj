@@ -137,6 +137,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="game.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_demo.cpp" />
@@ -153,6 +154,8 @@
     <None Include="regular_polygon_vs.hlsl" />
     <None Include="grid_fs.hlsl" />
     <None Include="grid_vs.hlsl" />
+    <None Include="smooth_circle_fs.hlsl" />
+    <None Include="smooth_circle_vs.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h" />
@@ -170,6 +173,8 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="math.h" />
     <ClInclude Include="shader.h" />
+    <ClInclude Include="test.h" />
+    <ClInclude Include="ui.h" />
     <ClInclude Include="yyjson\yyjson.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
