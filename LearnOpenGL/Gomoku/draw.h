@@ -1,14 +1,14 @@
-#ifndef DRAW_H
-#define DRAW_H
-
+#pragma once
 #include <vector>
 #include "shader.h"
 #include "math.h"
 
-// @TODO grid rendering references
-// https://madebyevan.com/shaders/grid/
-// https://github.com/martin-pr/possumwood/wiki/Infinite-ground-plane-using-GLSL-shaders
-// http://asliceofrendering.com/scene%20helper/2020/01/05/InfiniteGrid/
+/*
+* @TODO grid rendering references
+* - https://madebyevan.com/shaders/grid/
+* - https://github.com/martin-pr/possumwood/wiki/Infinite-ground-plane-using-GLSL-shaders
+* - http://asliceofrendering.com/scene%20helper/2020/01/05/InfiniteGrid/
+*/
 class Grid
 {
 private:
@@ -121,9 +121,11 @@ private:
     // @TODO
     //GLuint ibo;
 public:
-    bool isBlack = true;
-    float alpha = 0.5f;
     const float Radius = 1.0f / 15 * 0.5f;
+    bool isBlack = true;
+    const float placedAlpha = 1.0f;
+    const float hoveringAlpha = 0.3f;
+    float alpha = 0.5f;
     
     // https://blog.lapingames.com/draw-circle-glsl-shader/
     RegularPolygon(Shader& _rpShader, int _side = 20) : rpShader(_rpShader), side(_side)
@@ -178,4 +180,16 @@ public:
     }
 };
 
-#endif // DRAW_H 
+// @TODO N-gon vs fragment-shader (cut a circle out of quad; https://stackoverflow.com/questions/64170321/how-to-draw-a-smooth-circle-with-a-border-in-glsl)
+class SmoothCircle
+{
+public:
+    SmoothCircle () {}
+};
+
+// @TODO debug drawing; indicate banned placing position (renzurule)
+class Line
+{
+public:
+    Line() {}
+};

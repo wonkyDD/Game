@@ -70,7 +70,8 @@ StyleCopReport.xml
 *_h.h
 *.ilk
 *.meta
-*.obj
+**/*.obj
+!resources/**/*.obj
 *.iobj
 *.pch
 *.pdb

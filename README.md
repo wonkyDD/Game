@@ -15,7 +15,19 @@
 - Physics
   - box2d
   - Bullet3
-  <!-- - PhysX -->
+  - PhysX
+  <!-- - CubbyFlow -->
+  <!-- - fluid-engine-dev -->
+<!-- - Library -->
+  <!-- - Assimp -->
+  <!-- - SMFL -->
+  <!-- - SDL3 -->
+  <!-- - GLFW -->
+  <!-- - ImGuizmo -->
+  <!-- - ImGui -->
+  <!-- - freetype(-gl) -->
+  <!-- - stb -->
+<!-- - other projects -->
 <!-- - Mathematics -->
   <!-- - Linear Algebra -->
 
